@@ -15,8 +15,6 @@ int main(int ac, char **av, char **env)
 	ssize_t check = 0;
 	size_t size_buffer = 0;
 	char *line = NULL, **_argv = NULL;
-	pid_t my_pid;
-	int status;
 	(void)ac;
 
 	while (1)
@@ -25,24 +23,17 @@ int main(int ac, char **av, char **env)
 			printf("($) ");
 		check = getline(&line, &size_buffer, stdin);
 		if (check == -1)
+		{
+			free_arguments(_argv, line);
 			break;
+		}
 		line[(strlen(line) - 1)] = '\0';
 		_argv = argv_for_shell(line);
-		my_pid = fork();
-		if (my_pid == 0)
-		{
-			if (execve(line, _argv, env) == -1)
-			{
-				printf("%s: 1: %s: not found\n", av[0], _argv[0]);
-				free_arguments(_argv, line);
-				return (-1);
-			}
-			return (0);
-		}
-		if (my_pid == -1)
-			printf("Fork failed\n");
-		wait(&status);
+		if ((executing_program(line, _argv, env)) == -1)
+			printf("%s: 1: %s: not found\n", av[0], _argv[0]);
+		free_arguments(_argv, line);
+		line = NULL;
+		_argv = NULL;
 	}
-	free_arguments(_argv, line);
 	return (0);
 }

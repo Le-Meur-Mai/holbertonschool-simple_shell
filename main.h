@@ -9,10 +9,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-char *_wich(char *line);
+char *_which(char *command_name);
 char *_getenv(const char *name);
-int string_lenght(char *string);
 char **argv_for_shell(char *line);
 void free_arguments(char **_argv, char *line);
+int executing_program(char *line, char **_argv, char **env);
 
 #endif
