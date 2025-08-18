@@ -29,7 +29,7 @@ int main(int ac, char **av, char **env)
 		}
 		line[(strlen(line) - 1)] = '\0';
 		_argv = argv_for_shell(line);
-		if ((executing_program(line, _argv, env)) == -1)
+		if ((executing_program(line, _argv, env)) == 11)
 			printf("%s: 1: %s: not found\n", av[0], _argv[0]);
 		free_arguments(_argv, line);
 		line = NULL;
