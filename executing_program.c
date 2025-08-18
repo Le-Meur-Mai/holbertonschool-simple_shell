@@ -44,5 +44,5 @@ int executing_program(char *line, char **_argv, char **env)
 		return (11);
 	}
 	free(path_of_command);
-	return (0);
+	return (status);
 }

@@ -41,5 +41,6 @@ char *_which(char *command_name)
 			free(path_complete);
 			path_complete = NULL;
 		}
+	free(the_path);
 	return (NULL);
 }

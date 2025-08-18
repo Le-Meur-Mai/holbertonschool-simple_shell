@@ -28,9 +28,14 @@ int main(int ac, char **av, char **env)
 			break;
 		}
 		line[(strlen(line) - 1)] = '\0';
-		_argv = argv_for_shell(line);
-		if ((executing_program(line, _argv, env)) == 11)
+		if (line == NULL)
 			printf("%s: 1: %s: not found\n", av[0], _argv[0]);
+		else if (line != NULL)
+		{
+			_argv = argv_for_shell(line);
+			if ((executing_program(line, _argv, env)) == 11)
+				printf("%s: 1: %s: not found\n", av[0], _argv[0]);
+		}
 		free_arguments(_argv, line);
 		line = NULL;
 		_argv = NULL;
