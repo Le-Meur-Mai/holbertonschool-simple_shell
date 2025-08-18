@@ -12,5 +12,7 @@
 char *_wich(char *line);
 char *_getenv(const char *name);
 int string_lenght(char *string);
+char **argv_for_shell(char *line);
+
 
 #endif
