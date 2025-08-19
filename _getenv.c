@@ -12,11 +12,12 @@
 char *_getenv(const char *name_var, char **env)
 {
 	int i = 0;
+	size_t length = 0;
 
 	if (name_var == NULL)
 		return (NULL);
 
-	size_t length = strlen(name_var);
+	length = strlen(name_var);
 
 	for (; env[i] != NULL; i++)
 	{
