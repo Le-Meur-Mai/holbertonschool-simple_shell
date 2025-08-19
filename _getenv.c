@@ -16,7 +16,7 @@ char *_getenv(const char *name_var, char **env)
 	size_t length = strlen(name_var);
 
 	if (name_var == NULL)
-		return (NULL);
+		exit(1);
 
 	for (; env[i] != NULL; i++)
 	{

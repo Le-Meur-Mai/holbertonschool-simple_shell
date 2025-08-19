@@ -20,25 +20,25 @@ int executing_program(char *line, char **_argv, char **env)
 		if (my_pid == 0 && path_of_command == NULL)
 		{
 			if (execve(line, _argv, env) == -1)
-				exit(11);
+				exit(126);
 		}
 		else if (my_pid == 0 && path_of_command != NULL)
 		{
 			if (execve(path_of_command, _argv, env) == -1)
-				exit(11);
+				exit(126);
 		}
 		else if (my_pid == -1)
 		{
 			printf("fork failed\n");
 			free(path_of_command);
-			return (11);
+			return (126);
 		}
 	wait(&status);
 	}
 	else
 	{
 		free(path_of_command);
-		return (11);
+		return (127);
 	}
 	free(path_of_command);
 	return (status);
