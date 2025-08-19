@@ -15,5 +15,6 @@ char **argv_for_shell(char *line);
 void free_arguments(char **_argv, char *line);
 int executing_program(char *line, char **_argv, char **env);
 void print_env(char **env);
+int verif_command(char *line, char **_argv, char **env, ssize_t code_exit);
 
 #endif

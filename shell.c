@@ -33,15 +33,7 @@ int main(int ac, char **av, char **env)
 		else if (line != NULL)
 		{
 			_argv = argv_for_shell(line);
-			if (strcmp(_argv[0], "exit") == 0)
-				{
-				free_arguments(_argv, line);
-				exit(code_exit);
-				}
-			if (strcmp(_argv[0], "env") == 0)
-				print_env(env);
-
-			if ((strcmp(_argv[0], "env")) != 0)
+			if (verif_command(line, _argv, env, code_exit) == 0)
 			{
 				code_exit = executing_program(line, _argv, env);
 				if (code_exit != 0)
@@ -51,5 +43,6 @@ int main(int ac, char **av, char **env)
 		free_arguments(_argv, line);
 		line = NULL, _argv = NULL;
 	}
+	printf("\n");
 	return (0);
 }

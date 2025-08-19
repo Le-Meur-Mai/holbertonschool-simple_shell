@@ -28,5 +28,10 @@ char **argv_for_shell(char *line)
 		argument_string = strtok(NULL, separators);
 	}
 	_argv[i] = NULL;
+	if (_argv == NULL)
+	{
+		free(_argv);
+		return (NULL);
+	}
 	return (_argv);
 }
