@@ -13,7 +13,7 @@
 int main(int ac, char **av, char **env)
 {
 	ssize_t check = 0;
-	size_t size_buffer = 0;
+	size_t size_buffer = 0, j = 1;
 	char *line = NULL, **_argv = NULL;
 	(void)ac;
 
@@ -29,7 +29,7 @@ int main(int ac, char **av, char **env)
 		}
 		line[(strlen(line) - 1)] = '\0';
 		if (line == NULL)
-			printf("%s: 1: %s: not found\n", av[0], _argv[0]);
+			printf("%s: %ld: %s: not found\n", av[0], j, _argv[0]);
 		else if (line != NULL)
 		{
 			_argv = argv_for_shell(line);
@@ -43,11 +43,12 @@ int main(int ac, char **av, char **env)
 
 			if ((strcmp(_argv[0], "env")) != 0 &&
 			(executing_program(line, _argv, env)) == 11)
-				printf("%s: 1: %s: not found\n", av[0], _argv[0]);
+				printf("%s: %ld: %s: not found\n", av[0], j, _argv[0]);
 		}
 		free_arguments(_argv, line);
 		line = NULL;
 		_argv = NULL;
+		j++;
 	}
 	return (0);
 }
