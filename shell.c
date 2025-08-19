@@ -43,6 +43,5 @@ int main(int ac, char **av, char **env)
 		free_arguments(_argv, line);
 		line = NULL, _argv = NULL;
 	}
-	printf("\n");
 	return (0);
 }
