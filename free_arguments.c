@@ -8,6 +8,8 @@
  */
 void free_arguments(char **_argv, char *line)
 {
-	free (_argv);
-	free(line);
+	if (_argv != NULL)
+		free(_argv);
+	if (line != NULL)
+		free(line);
 }

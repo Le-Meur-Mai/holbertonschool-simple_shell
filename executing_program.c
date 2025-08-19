@@ -25,10 +25,7 @@ int executing_program(char *line, char **_argv, char **env)
 		else if (my_pid == 0 && path_of_command != NULL)
 		{
 			if (execve(path_of_command, _argv, env) == -1)
-			{
-				free(path_of_command);
 				exit(11);
-			}
 		}
 		else if (my_pid == -1)
 		{
