@@ -10,7 +10,7 @@
 int executing_program(char *line, char **_argv, char **env)
 {
 	struct stat _stat;
-	char *path_of_command = _which(_argv[0]);
+	char *path_of_command = _which(_argv[0], env);
 	pid_t my_pid;
 	int status;
 

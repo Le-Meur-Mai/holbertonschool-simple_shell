@@ -3,15 +3,16 @@
 /**
  * _which- function that found the absolute path of a command
  * @command_name: command you wan to know the absolute path
+ * @env: Environment variable
  * Return: NULL if the command doesn't exist or the asolute path of the command
  */
 
 
-char *_which(char *command_name)
+char *_which(char *command_name, char **env)
 {
 	char *separator = ":";
 	char *strtoken = NULL;
-	char *the_path = strdup(_getenv("PATH"));
+	char *the_path = strdup(_getenv("PATH", env));
 	char *path_complete = NULL;
 	struct stat st;
 	size_t len = 0;
