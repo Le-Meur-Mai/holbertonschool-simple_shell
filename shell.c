@@ -40,7 +40,9 @@ int main(int ac, char **av, char **env)
 				}
 			if (strcmp(_argv[0], "env") == 0)
 				print_env(env);
-			if ((executing_program(line, _argv, env)) == 11)
+
+			if ((strcmp(_argv[0], "env")) != 0 &&
+			(executing_program(line, _argv, env)) == 11)
 				printf("%s: 1: %s: not found\n", av[0], _argv[0]);
 		}
 		free_arguments(_argv, line);

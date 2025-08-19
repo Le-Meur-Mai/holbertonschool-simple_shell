@@ -8,7 +8,7 @@
 char **argv_for_shell(char *line)
 {
 	char *string_arg;
-	char *separators = " ";
+	char *separators = " ,	";
 	int i = 0;
 	char **_argv = malloc(sizeof(char *) * 64);
 
