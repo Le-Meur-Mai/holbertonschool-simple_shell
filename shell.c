@@ -35,9 +35,11 @@ int main(int ac, char **av, char **env)
 			_argv = argv_for_shell(line);
 			if (strcmp(_argv[0], "exit") == 0)
 				{
-					free_arguments(_argv, line);
-					break;
+				free_arguments(_argv, line);
+				exit(0);
 				}
+			if (strcmp(_argv[0], "env") == 0)
+				print_env(env);
 			if ((executing_program(line, _argv, env)) == 11)
 				printf("%s: 1: %s: not found\n", av[0], _argv[0]);
 		}
