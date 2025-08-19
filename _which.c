@@ -15,16 +15,16 @@ char *_which(char *command_name, char **env)
 	char *the_path = strdup(_getenv("PATH", env));
 	char *path_complete = NULL;
 	struct stat st;
-	size_t len = 0;
+	size_t lenght_of_path = 0;
 
 	strtoken = strtok(the_path, separator);
 		while (strtoken != NULL)
 		{
-			len = strlen(strtoken) + strlen(command_name) + 2;
-			path_complete = malloc(len);
+			lenght_of_path = strlen(strtoken) + strlen(command_name) + 2;
+			path_complete = malloc(lenght_of_path);
 			if (path_complete == NULL)
 			{
-				printf("mallocNULL");
+				printf("Echec de l'allocation de mémoire\n");
 				free(the_path);
 				return (NULL);
 			}

@@ -7,7 +7,7 @@
  */
 char **argv_for_shell(char *line)
 {
-	char *string_arg;
+	char *argument_string;
 	char *separators = " ,	";
 	int i = 0;
 	char **_argv = malloc(sizeof(char *) * 64);
@@ -20,12 +20,12 @@ char **argv_for_shell(char *line)
 
 	if (_argv == NULL)
 	return (NULL);
-	string_arg = strtok(line, separators);
-	while (string_arg != NULL)
+	argument_string = strtok(line, separators);
+	while (argument_string != NULL)
 	{
-		_argv[i++] = string_arg;
-		string_arg = NULL;
-		string_arg = strtok(NULL, separators);
+		_argv[i++] = argument_string;
+		argument_string = NULL;
+		argument_string = strtok(NULL, separators);
 	}
 	_argv[i] = NULL;
 	return (_argv);
