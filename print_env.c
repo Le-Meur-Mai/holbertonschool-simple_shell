@@ -8,9 +8,10 @@
 void print_env(char **env)
 {
 	int i = 0;
+
 	if (env[i] == NULL)
-	exit(1);
-	
+	return;
+
 	while (env[i] != NULL)
 	{
 		printf("%s\n", env[i]);

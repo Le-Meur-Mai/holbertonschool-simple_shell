@@ -17,6 +17,9 @@ char *_which(char *command_name, char **env)
 	struct stat st;
 	size_t lenght_of_path = 0;
 
+	if (the_path == NULL)
+		return (NULL);
+
 	strtoken = strtok(the_path, separator);
 		while (strtoken != NULL)
 		{
