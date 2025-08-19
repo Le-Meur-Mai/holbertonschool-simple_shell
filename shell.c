@@ -14,7 +14,7 @@ int main(int ac, char **av, char **env)
 {
 	ssize_t check = 0;
 	size_t size_buffer = 0;
-	char *line = NULL, **_argv = NULL;
+	char *line = NULL, **_argv = NULL, *compare = "exit\n";
 	(void)ac;
 
 	while (1)
@@ -22,7 +22,7 @@ int main(int ac, char **av, char **env)
 		if (isatty(STDIN_FILENO) == 1)
 			printf("($) ");
 		check = getline(&line, &size_buffer, stdin);
-		if (check == -1)
+		if (check == -1 || strcmp(line, compare) == 0)
 		{
 			free_arguments(_argv, line);
 			break;
