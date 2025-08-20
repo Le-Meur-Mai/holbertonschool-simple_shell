@@ -122,7 +122,7 @@ total 72
 -rw-rw-r-- 1 franck franck  1219 août  20 09:29 _which.c
 $ env
 SHELL=/bin/bash
-SESSION_MANAGER=local/APPLE-A2780:@/tmp/.ICE-unix/2337,unix/APPLE-A2780:/tmp/.ICE-unix/2337
+SESSION_MANAGER=local/NINTENDO-64:@/tmp/.ICE-unix/2337,unix/NINTEDO-64:/tmp/.ICE-unix/2337
 QT_ACCESSIBILITY=1
 COLORTERM=truecolor
 XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
