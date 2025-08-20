@@ -9,7 +9,7 @@
  * Return: 1 if the command is a built-in, 0 if not
  */
 
-int verif_command(char *line, char **_argv, char **env, ssize_t code_exit)
+int verif_built_in(char *line, char **_argv, char **env, ssize_t code_exit)
 {
 	if (_argv == NULL || _argv[0] == NULL || (strcmp(_argv[0], "\n") == 0))
 	{

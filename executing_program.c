@@ -7,7 +7,7 @@
  * Return: 11 on failure, 0 on success
  */
 
-int executing_program(char *line, char **_argv, char **env)
+int executing_program(char **_argv, char **env)
 {
 	struct stat _stat;
 	char *path_of_command = _which(_argv[0], env);
@@ -19,7 +19,7 @@ int executing_program(char *line, char **_argv, char **env)
 		my_pid = fork();
 		if (my_pid == 0 && path_of_command == NULL)
 		{
-			if (execve(line, _argv, env) == -1)
+			if (execve(_argv[0], _argv, env) == -1)
 				exit(126);
 		}
 		else if (my_pid == 0 && path_of_command != NULL)

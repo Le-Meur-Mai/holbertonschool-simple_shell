@@ -33,9 +33,9 @@ int main(int ac, char **av, char **env)
 		else if (line != NULL)
 		{
 			_argv = argv_for_shell(line);
-			if (verif_command(line, _argv, env, code_exit) == 0)
+			if (verif_built_in(line, _argv, env, code_exit) == 0)
 			{
-				code_exit = executing_program(line, _argv, env);
+				code_exit = executing_program(_argv, env);
 				if (code_exit != 0)
 					printf("%s: 1: %s: not found\n", av[0], _argv[0]);
 			}

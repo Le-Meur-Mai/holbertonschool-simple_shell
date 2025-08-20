@@ -1,0 +1,90 @@
+.TH HSH 1 "13 Août 2025" "Shell personnalisé" "Commandes utilisateur"
+
+.SH NOM
+hsh \- interpréteur de commandes simple en ligne de commande
+.SH SYNOPSIS
+.TP
+.B #include "main.h"
+.PP
+.B int main(int ac, char **av, char **env);
+.TP
+.SH DESCRIPTION
+
+.B hsh
+est un shell minimaliste qui permet d'exécuter des commandes depuis un terminal.  
+Il lit la saisie utilisateur, analyse les commandes et exécute les programmes correspondants.  
+
+.PP
+.B Fonctionnalités implémentées :
+.TP
+- Exécution de commandes externes présentes dans le PATH.
+.TP
+- Exécution des commandes avec leur chemin absolu.
+.TP
+- Lecture et exécution des arguments.
+.TP
+.B Commandes internes :
+.TP
+- exit : quitter le shell
+.TP
+- env : lister l'environnement local
+.TP
+- Gestion des erreurs de commandes inconnues.
+
+.PP
+.B Fonctionnalités non prises en charge :
+.TP
+Redirection des sorties.
+.TP
+Déplacement du curseur non supporté.
+.TP
+.SH RETURN VALUE
+
+.TP
+0
+Le shell se termine normalement lorsque l'utilisateur envoie un EOF (Ctrl+D) ou utilise la commande `exit` après que la dernière commande s'est exécutée correctement.
+.TP
+126
+La commande existe mais n'a pas pu s'exécuter.
+.TP
+127
+La commande n'a pas été trouvée ou n'existe pas.
+.TP
+130
+Le shell est interrompu par l'utilisateur à l'aide du signal Ctrl+C (SIGINT).
+.TP
+.SH EXEMPLES
+.TP
+Lancer le shell :
+.PP
+.RS
+./hsh
+.RE
+
+Exécuter une commande depuis le mode non interactif :
+.PP
+.RS
+echo "ls -l" | ./hsh
+.RE
+
+Exécuter une commande depuis le mode interactif :
+.PP
+.RS
+ls -l
+/bin/ls -l
+.RE
+
+Afficher le chemin courant :
+.PP
+.RS
+pwd
+.RE
+.SH DATE
+.TP
+13/08/2025
+.RE
+.SH AUTEURS
+.TP
+JoevinM  
+.TP
+Le-Meur-Mai
