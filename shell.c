@@ -24,6 +24,8 @@ int main(int ac, char **av, char **env)
 		check = getline(&line, &size_buffer, stdin);
 		if (check == -1)
 		{
+			if (isatty(STDIN_FILENO) == 1)
+				printf("\n");
 			free_arguments(_argv, line);
 			break;
 		}
@@ -36,8 +38,10 @@ int main(int ac, char **av, char **env)
 			if (verif_built_in(line, _argv, env, code_exit) == 0)
 			{
 				code_exit = executing_program(_argv, env);
-				if (code_exit != 0)
+				if (code_exit == 127)
 					printf("%s: 1: %s: not found\n", av[0], _argv[0]);
+				else if (code_exit == 126)
+					printf("%s : %s found but not executable\n", av[0], _argv[0]);
 			}
 		}
 		free_arguments(_argv, line);
