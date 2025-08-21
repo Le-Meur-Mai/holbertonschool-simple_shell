@@ -30,19 +30,14 @@ int main(int ac, char **av, char **env)
 			break;
 		}
 		line[(strlen(line) - 1)] = '\0';
-		if (line == NULL)
-			fprintf(stderr, "%s: %ld: %s: not found\n", av[0], j, _argv[0]);
-		else if (line != NULL)
+		_argv = argv_for_shell(line);
+		if (verif_built_in(line, _argv, env, code_exit) == 1)
 		{
-			_argv = argv_for_shell(line);
-			if (verif_built_in(line, _argv, env, code_exit) == 1)
-			{
-				code_exit = executing_program(_argv, env);
-				if (code_exit == 127)
-					fprintf(stderr, "%s: %ld: %s: not found\n", av[0], j, _argv[0]);
-				else if (code_exit == 126)
-					fprintf(stderr, "%s : %s found but not executable\n", av[0], _argv[0]);
-			}
+			code_exit = executing_program(_argv, env);
+			if (code_exit == 127)
+				fprintf(stderr, "%s: %ld: %s: not found\n", av[0], j, _argv[0]);
+			else if (code_exit == 126)
+				fprintf(stderr, "%s : %s found but not executable\n", av[0], _argv[0]);
 		}
 		free_arguments(_argv, line);
 		line = NULL, _argv = NULL;

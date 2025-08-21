@@ -12,14 +12,14 @@ char **argv_for_shell(char *line)
 	int i = 0;
 	char **_argv = malloc(sizeof(char *) * 64);
 
+	if (_argv == NULL)
+		return (NULL);
+
 	if (line == NULL)
 	{
 		free(_argv);
 		return (NULL);
 	}
-
-	if (_argv == NULL)
-	return (NULL);
 	argument_string = strtok(line, separators);
 	while (argument_string != NULL)
 	{
@@ -28,10 +28,6 @@ char **argv_for_shell(char *line)
 		argument_string = strtok(NULL, separators);
 	}
 	_argv[i] = NULL;
-	if (_argv == NULL)
-	{
-		free(_argv);
-		return (NULL);
-	}
+	
 	return (_argv);
 }

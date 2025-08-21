@@ -11,7 +11,7 @@
 
 int verif_built_in(char *line, char **_argv, char **env, ssize_t code_exit)
 {
-	if (_argv == NULL || _argv[0] == NULL || (strcmp(_argv[0], "\n") == 0))
+	if (_argv == NULL || _argv[0] == NULL)
 	{
 		return (0);
 	}
