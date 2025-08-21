@@ -18,8 +18,8 @@ int verif_built_in(char *line, char **_argv, char **env, ssize_t code_exit)
 
 	if (strcmp(_argv[0], "env") == 0)
 	{
-		print_env(env);
-		return (1);
+		code_exit = print_env(env);
+		return (code_exit);
 	}
 
 	if (strcmp(_argv[0], "exit") == 0)
