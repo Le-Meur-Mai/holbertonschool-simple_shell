@@ -23,11 +23,11 @@ char **argv_for_shell(char *line)
 	argument_string = strtok(line, separators);
 	while (argument_string != NULL)
 	{
-		_argv[i++] = argument_string;
-		argument_string = NULL;
+		_argv[i] = argument_string;
+		i++;
 		argument_string = strtok(NULL, separators);
 	}
 	_argv[i] = NULL;
-	
+
 	return (_argv);
 }
