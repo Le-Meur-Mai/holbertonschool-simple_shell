@@ -26,6 +26,7 @@ Il fonctionne aussi bien en **mode interactif** qu’en **mode non-interactif** 
 ---
 
 ## Flowchart
+<img width="1989" height="2494" alt="FlowchartSHELL1" src="https://github.com/user-attachments/assets/acf17797-fdcf-43d6-81fd-e259ffbbff23" />
 
 ---
 
