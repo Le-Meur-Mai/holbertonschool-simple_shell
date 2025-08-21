@@ -20,7 +20,10 @@ int main(int ac, char **av, char **env)
 	while (1)
 	{
 		if (isatty(STDIN_FILENO) == 1)
+		{
 			printf("($) ");
+			fflush(stdout);
+		}
 		check = getline(&line, &size_buffer, stdin);
 		if (check == -1)
 		{
