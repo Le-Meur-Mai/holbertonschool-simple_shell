@@ -24,6 +24,6 @@ char *_getenv(const char *name_var, char **env)
 		if (strncmp(env[i], name_var, length) == 0 && env[i][length] == '=')
 			return (&env[i][length + 1]);
 	}
-	fprintf(stderr, "Variable not found\n");
+	fprintf(stderr, "Environment variable not found\n");
 	return (NULL);
 }

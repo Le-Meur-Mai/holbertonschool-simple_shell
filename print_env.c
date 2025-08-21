@@ -3,7 +3,7 @@
 /**
  * print_env- print the environment variable
  * @env: environment variable
- * Return: return 2 on error, return 1 on success
+ * Return: return 2 on error, return 0 on success
  */
 
 int print_env(char **env)
@@ -20,5 +20,5 @@ int print_env(char **env)
 		printf("%s\n", env[i]);
 		i++;
 	}
-	return (1);
+	return (0);
 }

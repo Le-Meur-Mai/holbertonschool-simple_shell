@@ -6,14 +6,14 @@
  * @_argv: Array of arguments
  * @env: environment variable
  * @code_exit: exit code of the last command
- * Return: 1 if the command is a built-in, 0 if not
+ * Return: 0 if the command is a built-in, 1 if not
  */
 
 int verif_built_in(char *line, char **_argv, char **env, ssize_t code_exit)
 {
 	if (_argv == NULL || _argv[0] == NULL || (strcmp(_argv[0], "\n") == 0))
 	{
-		return (1);
+		return (0);
 	}
 
 	if (strcmp(_argv[0], "env") == 0)
@@ -27,5 +27,5 @@ int verif_built_in(char *line, char **_argv, char **env, ssize_t code_exit)
 		free_arguments(_argv, line);
 		exit(code_exit);
 	}
-	return (0);
+	return (1);
 }
