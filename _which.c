@@ -27,7 +27,7 @@ char *_which(char *command_name, char **env)
 			path_complete = malloc(lenght_of_path);
 			if (path_complete == NULL)
 			{
-				printf("Echec de l'allocation de mémoire\n");
+				fprintf(stderr, "Echec de l'allocation de mémoire\n");
 				free(the_path);
 				return (NULL);
 			}

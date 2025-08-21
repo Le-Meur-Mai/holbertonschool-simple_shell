@@ -31,7 +31,7 @@ int main(int ac, char **av, char **env)
 		}
 		line[(strlen(line) - 1)] = '\0';
 		if (line == NULL)
-			printf("%s: 1: %s: not found\n", av[0], _argv[0]);
+			fprintf(stderr, "%s: 1: %s: not found\n", av[0], _argv[0]);
 		else if (line != NULL)
 		{
 			_argv = argv_for_shell(line);
@@ -39,9 +39,9 @@ int main(int ac, char **av, char **env)
 			{
 				code_exit = executing_program(_argv, env);
 				if (code_exit == 127)
-					printf("%s: 1: %s: not found\n", av[0], _argv[0]);
+					fprintf(stderr, "%s: 1: %s: not found\n", av[0], _argv[0]);
 				else if (code_exit == 126)
-					printf("%s : %s found but not executable\n", av[0], _argv[0]);
+					fprintf(stderr, "%s : %s found but not executable\n", av[0], _argv[0]);
 			}
 		}
 		free_arguments(_argv, line);

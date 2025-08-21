@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * verif_command- verify if a command is a built-in
+ * verif_built_in- if a command is a built-in
  * @line: line of command
  * @_argv: Array of arguments
  * @env: environment variable

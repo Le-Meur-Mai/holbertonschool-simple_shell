@@ -1,7 +1,6 @@
 #include "main.h"
 /**
  * executing_program- execute a program with the line and the arguments given.
- * @line: command given
  * @_argv: array of arguments of the command
  * @env : environment variable
  * Return: 11 on failure, 0 on success
@@ -29,7 +28,7 @@ int executing_program(char **_argv, char **env)
 		}
 		else if (my_pid == -1)
 		{
-			printf("fork failed\n");
+			fprintf(stderr, "fork failed\n");
 			free(path_of_command);
 			return (126);
 		}
