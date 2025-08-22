@@ -16,12 +16,12 @@ int executing_program(char **_argv, char **env)
 	if (stat(_argv[0], &_stat) == 0 || path_of_command != NULL)
 	{
 		my_pid = fork();
-		if (my_pid == 0 && path_of_command == NULL)
+		if (my_pid == 0 && stat(_argv[0], &_stat) == 0)
 		{
 			if (execve(_argv[0], _argv, env) == -1)
 				exit(126);
 		}
-		else if (my_pid == 0 && path_of_command != NULL)
+		else if (my_pid == 0 && stat(_argv[0], &_stat) != 0)
 		{
 			if (execve(path_of_command, _argv, env) == -1)
 				exit(126);
