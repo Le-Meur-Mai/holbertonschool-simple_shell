@@ -12,10 +12,13 @@ char *_which(char *command_name, char **env)
 {
 	char *separator = ":";
 	char *strtoken = NULL;
-	char *the_path = strdup(_getenv("PATH", env));
+	char *the_path = NULL;
 	char *path_complete = NULL;
 	struct stat st;
 	size_t lenght_of_path = 0;
+
+	if (stat(command_name, &st) != 0 && _getenv("PATH", env) != NULL)
+		the_path = strdup(_getenv("PATH", env));
 
 	if (the_path == NULL)
 		return (NULL);
